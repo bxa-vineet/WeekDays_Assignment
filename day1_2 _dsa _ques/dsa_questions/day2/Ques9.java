@@ -1,21 +1,44 @@
 package dsa_questions;
 
-import java.util.Scanner;
-
 public class Ques9 {
-     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int orig = n;
-        int rev = 0;
 
-        while (n > 0) {
-            int d = n % 10;
-            rev = rev * 10 + d;
-            n /= 10;
+    public static void rotate(int[][] matrix) {
+
+        int n = matrix.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
         }
 
-        if (orig == rev) System.out.println("Palindrome");
-        else System.out.println("Not Palindrome");
-    } 
+        for (int i = 0; i < n; i++) {
+            int l = 0, r = n - 1;
+            while (l < r) {
+                int temp = matrix[i][l];
+                matrix[i][l] = matrix[i][r];
+                matrix[i][r] = temp;
+                l++;
+                r--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[][] matrix = {
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+        };
+
+        rotate(matrix);
+
+        for (int[] row : matrix) {
+            for (int val : row)
+                System.out.print(val + " ");
+            System.out.println();
+        }
+    }
 }

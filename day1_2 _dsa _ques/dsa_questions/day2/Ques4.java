@@ -1,14 +1,31 @@
 package dsa_questions;
-
-import java.util.Scanner;
-
 public class Ques4 {
-   public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
 
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(x + " x " + i + " = " + (x * i));
+    public static int trap(int[] height) {
+        int l = 0, r = height.length - 1;
+        int lMax = 0, rMax = 0, ans = 0;
+
+        while (l < r) {
+            lMax = Math.max(lMax,height[l]);
+            rMax = Math.max(rMax,height[r]);
+
+            if (lMax<rMax) {
+                ans+=(lMax-height[l]);
+                l++;
+            } else {
+                ans+=(rMax-height[r]);
+                r--;
+            }
         }
-    } 
+        return ans;
+    }
+
+    public static void main(String[] args) {
+
+        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+
+        int result = trap(height);
+
+        System.out.println(result);
+    }
 }

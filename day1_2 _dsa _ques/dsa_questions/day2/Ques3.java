@@ -1,22 +1,32 @@
 
 package dsa_questions;
-import java.util.Scanner;
 
-class Ques3 {
+public class Ques3 {
+
+    public static void rotate(int[] nums, int k) {
+        k = k % nums.length;
+
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+
+    private static void reverse(int[] nums, int l, int r) {
+        while (l < r) {
+            int temp = nums[l];
+            nums[l] = nums[r];
+            nums[r] = temp;
+            l++;
+            r--;
+        }
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        char c = Character.toLowerCase(sc.next().charAt(0));
-
-        switch (c) {
-            case 'a':
-            case 'e':
-            case 'i':
-            case 'o':
-            case 'u':
-                System.out.println("Vowel");
-                break;
-            default:
-                System.out.println("Consonant");
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
+        rotate(nums, k);
+        for (int num : nums) {
+            System.out.print(num + " ");
         }
     }
 }
