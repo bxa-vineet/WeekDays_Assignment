@@ -1,9 +1,9 @@
 package dsa_questions;
 
-import java.util.Scanner;
-
+import java.util.ArrayList;
+import java.util.*;
 class Ques10 {
-   public  static int bs(int[] a, int l, int r, int t) {
+    static int bs(int[] a, int l, int r, int t) {
         if (l > r) return -1;
 
         int m = l + (r - l) / 2;
@@ -21,3 +21,5 @@ class Ques10 {
         System.out.println(res);
     }
 }
+
+
